@@ -9,4 +9,4 @@ tar -czf urna_extras.tar.gz *
 mv urna_extras.tar.gz ../simple-cdd/profiles
 cd ../simple-cdd
 export simple_cdd_dir=`pwd`
-build-simple-cdd --conf ./simple-cdd.conf --graphical-installer -p urna -a urna --locale pt_BR --keyboard br-abnt2 
+build-simple-cdd --conf ./simple-cdd.conf --graphical-installer -p urna -a urna --locale pt_BR --keyboard br 
