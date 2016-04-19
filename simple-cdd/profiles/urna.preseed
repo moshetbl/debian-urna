@@ -7,7 +7,7 @@ d-i debconf/priority string critical
 d-i debian-installer/language string pt_BR
 d-i debian-installer/country string BR
 d-i debian-installer/locale string pt_BR.UTF-8
-d-i localechooser/supported-locales multiselect pt_BR.UTF-8, en_US.UTF-8
+d-i localechooser/supported-locales multiselect pt_BR.UTF-8
 
 # Teclado
 d-i console-tools/archs select at
