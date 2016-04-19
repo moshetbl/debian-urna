@@ -1,0 +1,61 @@
+# Referencia:
+# http://domarques.com.br/blog/2014/12/automatizando-a-instalacao-do-debian-com-preseed
+d-i debconf/priority string critical
+
+# Localizacao
+
+d-i debian-installer/language string pt_BR
+d-i debian-installer/country string BR
+d-i debian-installer/locale string pt_BR.UTF-8
+d-i localechooser/supported-locales multiselect pt_BR.UTF-8, en_US.UTF-8
+
+# Teclado
+d-i console-tools/archs select at
+d-i console-keymaps-at/keymap select br-abnt2
+d-i keyboard-configuration/xkb-keymap select br-abnt2
+d-i keyboard-configuration/toggle select No toggling
+
+# Rede em DHCP
+d-i netcfg/choose_interface select auto
+d-i netcfg/get_hostname string urna-machine
+d-i netcfg/get_domain string local.br
+d-i netcfg/hostname string urna.local.br
+d-i hw-detect/load_firmware boolean true
+
+# Repositorios
+base-config apt-setup/security-updates  boolean false
+d-i popularity-contest/participate  boolean false
+apt-mirror-setup apt-setup/use_mirror boolean false
+
+# Usuarios
+passwd   passwd/root-password    password urna
+passwd   passwd/root-password-again  password urna
+d-i passwd/user-fullname string Urna user
+d-i passwd/username string urna
+d-i passwd/user-password password urna
+d-i passwd/user-password-again password urna
+
+# Horario
+tzsetup-udeb  time/zone string  America/Sao_Paulo
+tzsetup-udeb  tzsetup/detected  boolean false
+tzsetup-udeb tzsetup/country/BR string America/Sao_Paulo
+clock-setup clock-setup/utc boolean true
+clock-setup clock-setup/ntp-server string pool.ntp.br
+clock-setup clock-setup/ntp boolean true
+d-i clock-setup/ntp-server string
+
+# Particionamento
+d-i partman-auto/init_automatically_partition       select  Guided - use entire disk
+d-i partman-auto/choose_recipe  select All files in one partition (recommended for new users)
+d-i partman/confirm_write_new_label boolean true
+d-i partman/choose_partition  select Finish partitioning and write changes to disk
+d-i partman/confirm boolean true
+d-i partman/confirm_nooverwrite boolean true
+partman-auto partman-auto/purge_lvm_from_device boolean true
+
+# GRUB
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/bootdev string /dev/sda
+
+# Finalizacao
+d-i finish-install/reboot_in_progress note

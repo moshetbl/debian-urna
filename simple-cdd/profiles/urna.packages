@@ -1,0 +1,57 @@
+# window manager
+xfwm4
+
+# x-teminal-emulator
+xterm
+
+# menus up to date
+menu
+
+# login manager
+lightdm
+
+# includes startx
+xbase-clients
+
+# X
+xorg
+
+# workaround http://bugs.debian.org/405639
+xserver-xorg-input-all
+xserver-xorg-video-all
+
+# Brazil
+aspell-pt-br
+ibrazilian
+task-brazilian-portuguese
+wbrazilian
+
+# Apache + PHP
+apache2
+php5
+php5-json
+php5-readline
+libapache2-mod-php5
+
+# Printing system
+cups
+printer-driver-gutenprint
+printer-driver-hpcups
+
+# Keyboard Websocket Dependencies
+xinput
+python-dev
+python-pip
+gcc
+linux-headers-3.16.0-4-586
+
+# Multimonitor Dependencies
+python-gtk2
+python-webkit
+
+# Dev and VirtualBox Dependencies (SHOULD BE REMOVED IN FINAL VERSION)
+git
+openssh-server
+vim
+build-essential
+module-assistant
