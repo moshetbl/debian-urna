@@ -1,14 +1,9 @@
 #!/bin/sh
-echo Copiando dados extras do CD-ROM...
 mount /media/cdrom
 cd /
 cp /media/cdrom0/simple-cdd/urna_extras.tar.gz /opt/
 umount /media/cdrom0
-echo Instalando sistemas para Urna...
 tar -zxf /opt/urna_extras.tar.gz
-echo Corrigindo permissões...
 chown -R www-data:www-data /var/www
-echo Instalando Adicionais para convidados do VirtualBox...
-bash /opt/VBoxLinuxAdditions.run
-echo Done!
+bash /opt/VBoxLinuxAdditions.run --nox11
 exit 0
