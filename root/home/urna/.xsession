@@ -1,3 +1,27 @@
-xrandr --output VGA-0 --left-of VGA-1
+
+function start_monitors() {
+  LEFT_VGA=""
+  VGA_LIST=`xrandr | grep ' connected' | cut -f1 -d" "`
+  COMMAND="xrandr"
+  for VGA in $VGA_LIST
+  do
+    if [ "$LEFT_VGA" != "" ]
+    then
+      COMMAND="$COMMAND --output $LEFT_VGA --left-of $VGA"
+    fi
+    LEFT_VGA=$VGA
+  done
+  $COMMAND
+}
+
+function get_urls() {
+  if [ ! -f ~/.urls.cfg ] || [ "`cat ~/.urls.cfg`" == "" ]
+  then
+    browser-detect-monitors 'http://localhost/mesario.html' 'http://localhost/urna.html' --messages 'Informe o número do monitor do MESÁRIO' 'Informe o número do monitor da URNA'>  ~/.urls.cfg
+  fi
+  cat ~/.urls.cfg
+}
+
+start_monitors
 xfwm4 &
-browser localhost/mesario.html localhost/urna.html
+browser `get_urls`
