@@ -17,7 +17,7 @@ function start_monitors() {
 function get_urls() {
   if [ ! -f ~/.urls.cfg ] || [ "`cat ~/.urls.cfg`" == "" ]
   then
-    browser-detect-monitors 'http://localhost/mesario.html' 'http://localhost/urna.html' --messages 'Informe o número do monitor do MESÁRIO' 'Informe o número do monitor da URNA'>  ~/.urls.cfg
+    browser-detect-monitors 'http://localhost/mesario.html' 'http://localhost:5000/' --messages 'Informe o número do monitor do MESÁRIO' 'Informe o número do monitor da URNA'>  ~/.urls.cfg
   fi
   cat ~/.urls.cfg
 }
