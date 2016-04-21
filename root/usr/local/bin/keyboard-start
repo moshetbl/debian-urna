@@ -1,0 +1,27 @@
+#!/bin/bash
+cd /opt/keyboard-websocket/
+if [ ! -f /etc/keyboard.conf ]
+then
+  xterm -e python detect_keyboard.py -o /etc/keyboard.conf
+fi
+
+function kill_old {
+  if ps aux | grep $1
+  then
+    kill `ps aux | grep $1 | tr -s " " | cut -f2 -d" "`
+    if ps aux | grep $1
+    then
+      kill `ps aux | grep $1 | tr -s " " | cut -f2 -d" "`
+      sleep 1
+      kill -9 `ps aux | grep $1 | tr -s " " | cut -f2 -d" "`
+    fi
+  fi
+}
+
+kill_old app.py
+nohup python app.py &
+disown
+
+kill_old hardware_app.py
+nohup python hardware_app.py -f /etc/keyboard.conf &
+disown

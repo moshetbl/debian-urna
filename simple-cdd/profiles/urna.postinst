@@ -6,4 +6,7 @@ umount /media/cdrom0
 tar -zxf /opt/urna_extras.tar.gz
 chown -R www-data:www-data /var/www
 bash /opt/VBoxLinuxAdditions.run --nox11
+cd /opt/keyboard-websocket
+pip install --no-index -f packages -r requirements.txt
+
 exit 0
