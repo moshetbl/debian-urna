@@ -23,3 +23,5 @@ echo 'socketIO-client==0.6.6' >> root/opt/keyboard-websocket/requirements.txt
 cd root
 tar -czf urna_extras.tar.gz *
 mv urna_extras.tar.gz ../simple-cdd/profiles
+cd ..
+rm -rf src
