@@ -1,11 +1,18 @@
 #!/bin/sh
+
 mount /media/cdrom
 cd /
 cp /media/cdrom0/simple-cdd/urna_extras.tar.gz /opt/
 umount /media/cdrom0
+
 tar -zxf /opt/urna_extras.tar.gz
+
+/usr/sbin/update-grub
+
 chown -R www-data:www-data /var/www
-bash /opt/VBoxLinuxAdditions.run --nox11
+
+/usr/sbin/dmidecode | grep -i product | grep VirtualBox && bash /opt/VBoxLinuxAdditions.run --nox11
+
 cd /opt/keyboard-websocket
 pip install --no-index -f packages -r requirements.txt
 
