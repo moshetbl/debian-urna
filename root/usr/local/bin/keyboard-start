@@ -1,8 +1,12 @@
 #!/bin/bash
+
 cd /opt/keyboard-websocket/
 if [ ! -f /etc/keyboard.conf ]
 then
-  xterm -e python detect_keyboard.py -o /etc/keyboard.conf
+  browser file:///opt/keyboard-ws-configure/configure.html &
+  PID=$!
+  python detect_keyboard.py -o /etc/keyboard.conf
+  kill $PID
 fi
 
 function kill_old {

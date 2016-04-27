@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #333;
+        color: #AAA;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .msgbox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+      }
+      #msg1 {
+        opacity: 1;
+        -webkit-animation-delay: 4.5s;
+        -webkit-animation-name: hide;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      #msg2 {
+        opacity: 0;
+        -webkit-animation-delay: 5s;
+        -webkit-animation-name: show;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes show {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+      }
+      @-webkit-keyframes hide {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Configurando o teclado</h1>
+    <div class='msgbox' id='msg1'>Aguarde enquanto limpamos o buffer do teclado, não pressione nenhuma tecla nesse momento...</div>
+    <div class='msgbox' id='msg2'>Agora pressione uma tecla no teclado da Urna</div>
+  </body>
+</html>
