@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /opt/keyboard-websocket/
+
 if [ ! -f /etc/keyboard.conf ]
 then
   browser file:///opt/keyboard-ws-configure/configure.html &
@@ -22,9 +23,8 @@ function kill_old {
   fi
 }
 
-kill_old app.py
-nohup python app.py &
-disown
+./stop_gunicorn.sh
+./start_gunicorn.sh
 
 kill_old hardware_app.py
 nohup python hardware_app.py -f /etc/keyboard.conf &
