@@ -1,0 +1,15 @@
+#!/bin/bash
+feh --bg-scale /opt/background.jpg
+if dmidecode | grep -i product | grep VirtualBox
+then
+  xterm -e "echo 'VirtualBox detectado!
+
+  Por favor, antes de prosseguir, conecte o teclado da urna na VM:
+  dispositivos > USB > e clique no respectivo teclado.
+
+  Habilite o segundo monitor (previamente configurado na criação da VM):
+  visualizar > tela virtual 2 > Habilitar.
+
+  Após esses passos, pressione qualquer tecla para continuar...'; read -n1"
+fi
+/usr/local/bin/keyboard-start

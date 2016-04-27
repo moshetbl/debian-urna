@@ -20,6 +20,9 @@ xorg
 xserver-xorg-input-all
 xserver-xorg-video-all
 
+# Wallpaper
+feh
+
 # Brazil
 aspell-pt-br
 ibrazilian
