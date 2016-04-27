@@ -21,7 +21,8 @@ function get_urls() {
   fi
   cat ~/.urls.cfg
 }
-
-start_monitors
 xfwm4 &
+sleep 0.5
+start_monitors
+sleep 0.5
 browser `get_urls`
