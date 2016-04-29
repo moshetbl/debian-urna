@@ -86,11 +86,18 @@ class Kiosk(object):
         if not Kiosk.pop_kiosk():
             gtk.main_quit()
 
+    def execute_system_commands(self, command):
+        if command == '/quit':
+            gtk.main_quit()
+
     def navigate(self, view, frame, request, action, decision):
-        if self.allow_any_host:
-            return
         uri = urlparse(request.get_uri())
-        if uri.hostname not in self.allowed_hosts:
+        if uri.hostname == "system":
+            decision.ignore()
+            self.execute_system_commands(uri.path)
+        elif self.allow_any_host:
+            return
+        elif uri.hostname not in self.allowed_hosts:
             print('{0} not allowed host. Allowed hosts are: {1}.'.format(uri.hostname, ", ".join(self.allowed_hosts)))
             decision.ignore()
 

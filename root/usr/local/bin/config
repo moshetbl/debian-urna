@@ -1,0 +1,68 @@
+#!/bin/bash
+[ "$1" != "execute" ] && xterm -e "$0 execute"
+
+while [ "$1" == "execute" ]
+do
+  clear
+  echo 'TERMINAL DE CONFIGURACAO'
+  echo '========================'
+  echo '1- Detectar telas'
+  echo '2- Redefinir posicoes das telas'
+  echo '3- Redefinir o teclado da urna'
+  echo '4- Reiniciar ambinete gráfico'
+  echo '5- Reiniciar maquina'
+  echo '6- Desligar maquina'
+  echo '7- Iniciar shell'
+  echo
+  echo '8- Sair'
+  read -en1 input
+
+
+  if [ "$input" == "1" ]
+  then
+    echo 'Configurando telas...'
+    start_monitors
+    sleep 1;
+  fi
+
+  if [ "$input" == "2" ]
+  then
+    echo 'Para reconfigurar as posições da tela é necessário fornecer a senha de root:'
+    su -c "rm ~urna/.urls.cfg; service lightdm restart"
+  fi
+
+  if [ "$input" == "3" ]
+  then
+    echo 'Para reconfigurar o teclado é necessário fornecer a senha de root:'
+    su -c "rm /etc/keyboard.conf; service lightdm restart"
+  fi
+
+  if [ "$input" == "4" ]
+  then
+    echo 'Para reiniciar o ambiente gráfico é necessário fornecer a senha de root:'
+    su -c "service lightdm restart"
+  fi
+
+  if [ "$input" == "5" ]
+  then
+    echo 'Para reiniciar a máquina é necessário fornecer a senha de root:'
+    su -c "shutdown -r now"
+  fi
+
+  if [ "$input" == "6" ]
+  then
+    echo 'Para desligar a máquina é necessário fornecer a senha de root:'
+    su -c "shutdown -h now"
+  fi
+
+  if [ "$input" == "7" ]
+  then
+    echo 'Para iniciar o shell é necessário fornecer a senha de root:'
+    su -
+  fi
+
+  if [ "$input" == "8" ]
+  then
+    break;
+  fi
+done

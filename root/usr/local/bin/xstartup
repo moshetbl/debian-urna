@@ -1,15 +1,9 @@
 #!/bin/bash
 feh --bg-scale /opt/background.jpg
-if /usr/sbin/dmidecode | grep -i product | grep VirtualBox
+if [ ! -f /etc/welcome.conf ]
 then
-  xterm -e "echo 'VirtualBox detectado!
-
-  Antes de prosseguir, conecte o teclado da urna na VM:
-  dispositivos > USB > e clique no respectivo teclado.
-
-  Habilite o segundo monitor (previamente configurado na VM):
-  visualizar > tela virtual 2 > Habilitar.
-
-  pressione qualquer tecla quando tudo estiver pronto...'; /bin/bash -c 'read -n1'"
+  /usr/local/bin/browser file:///opt/welcome/welcome.html
+  echo done > /etc/welcome.conf
 fi
+
 /usr/local/bin/keyboard-start

@@ -26,6 +26,6 @@ function kill_old {
 ./stop_gunicorn.sh
 ./start_gunicorn.sh
 
-kill_old hardware_app.py
+kill_old hardware_app.py >/dev/null 2>&1
 nohup python hardware_app.py -f /etc/keyboard.conf &
 disown

@@ -23,6 +23,9 @@ xserver-xorg-video-all
 # Wallpaper
 feh
 
+# shortcuts
+xbindkeys
+
 # Brazil
 aspell-pt-br
 ibrazilian
