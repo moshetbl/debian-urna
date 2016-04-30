@@ -2,7 +2,12 @@
 feh --bg-scale /opt/background.jpg
 if [ ! -f /etc/welcome.conf ]
 then
-  /usr/local/bin/browser file:///opt/welcome/welcome.html
+  if /usr/sbin/dmidecode | grep -i product | grep VirtualBox
+  then
+    /usr/local/bin/browser file:///opt/welcome/welcome_virtualbox.html
+  else
+    /usr/local/bin/browser file:///opt/welcome/welcome.html
+  fi
   echo done > /etc/welcome.conf
 fi
 

@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #333;
+        color: #AAA;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .msgbox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+      }
+      #msg1 {
+        opacity: 1;
+        -webkit-animation-delay: 3.5s;
+        -webkit-animation-name: hide;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      #msg2 {
+        width: 80%;
+        opacity: 0;
+        -webkit-animation-delay: 4s;
+        -webkit-animation-name: show;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      bold {
+        font-weight: bold;
+      }
+      @-webkit-keyframes show {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+      }
+      @-webkit-keyframes hide {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sistema URNA</h1>
+    <div class='msgbox' id='msg1'>Seja bem-vindo ao Sistema URNA</div>
+    <div class='msgbox' id='msg2'>
+      O sistema URNA irá configurar agora todos os periféricos necessários.<br/>
+      Antes de continuar, verifique se tudo está corretamente conectado. Para esse sistema é necessário:<br/>
+      <ul>
+        <li> 2 monitores (um para o mesário e outro para urna)</li>
+        <li> 2 teclados (um para o mesário e outro para urna)</li>
+        <li> 1 impressora</li>
+      </ul>
+      No VirtualBox é importante que sua máquina tenha sido criada com 2 monitores. <br/>
+      Para conectar esses dispositivos no VirtualBox, siga os seguintes passos:
+      <ul>
+        <li> dispositivos > USB > e clique no teclado da urna</li>
+        <li> dispositivos > USB > e clique na impressora</li>
+        <li> visualizar > tela virtual 2 > Habilitar</li>
+      </ul>
+
+      <br/>
+      Caso ocorra algum problema, você poderá executar essas configurações novamente através do terminal de configuração.<br/>
+      Para acessar o terminal de configuração, pressione a qualquer momento as teclas <bold>CTRL+ALT+T</bold><br/>
+      <br/>
+      <bold>Pressione qualquer tecla para continuar</bold>
+    </div>
+    <script>
+      document.onkeydown = function() {
+        window.location = '//system/quit';
+      }
+    </script>
+  </body>
+</html>

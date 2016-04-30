@@ -9,7 +9,10 @@ tar -zxf /opt/urna_extras.tar.gz
 
 /usr/sbin/update-grub
 
+useradd keyboarduser -p 9875$RANDOM -m
+
 chown -R www-data:www-data /var/www
+chown -R keyboarduser /opt/keyboard-websocket
 
 /usr/sbin/dmidecode | grep -i product | grep VirtualBox && bash /opt/VBoxLinuxAdditions.run --nox11
 
