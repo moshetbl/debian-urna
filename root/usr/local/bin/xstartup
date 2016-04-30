@@ -6,4 +6,5 @@ then
   echo done > /etc/welcome.conf
 fi
 
+/usr/local/bin/printer-start
 /usr/local/bin/keyboard-start

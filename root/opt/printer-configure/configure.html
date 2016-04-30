@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #333;
+        color: #AAA;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .msgbox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        -webkit-transform: translate(-50%, -50%);
+        -webkit-animation-name: show;
+        -webkit-animation-duration: 2s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      @-webkit-keyframes show {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Configurando Impressora</h1>
+    <div class='msgbox'>Aguarde enquanto a impressora é instalada...</div>
+
+  </body>
+</html>

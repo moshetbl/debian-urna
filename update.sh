@@ -6,6 +6,8 @@ then
    exit 1
 fi
 
+cp ../printer-auto-detect/auto_install_printer.py root/usr/local/bin/printer-detect
+chmod +x root/usr/local/bin/printer-detect
 cp ../multimonitor-browser/browser.py root/usr/local/bin/browser
 chmod +x root/usr/local/bin/browser
 cp ../multimonitor-browser/detect_monitors.py root/usr/local/bin/browser-detect-monitors

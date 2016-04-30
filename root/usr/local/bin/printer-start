@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -f /etc/printer.conf ]
+then
+  browser file:///opt/printer-configure/configure.html &
+  PID=$!
+  /usr/local/bin/printer-detect > /etc/printer.conf
+  kill $PID
+fi

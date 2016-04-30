@@ -1,0 +1,5 @@
+#!/bin/sh
+rm /etc/keyboard.conf
+rm /etc/welcome.conf
+rm /etc/printer.conf
+rm ~urna/.urls.cfg

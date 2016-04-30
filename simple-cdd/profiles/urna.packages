@@ -43,6 +43,7 @@ libapache2-mod-php5
 cups
 printer-driver-gutenprint
 printer-driver-hpcups
+python-cups
 
 # Keyboard Websocket Dependencies
 xinput
