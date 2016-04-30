@@ -1,1 +1,54 @@
-TELA DA URNA
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #333;
+        color: #AAA;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .msgbox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+      }
+
+      bold {
+        font-weight: bold;
+      }
+
+      a {
+        color: #DDD;
+      }
+
+      #text {
+        background-color: #555;
+        border-radius: 3px;
+        overflow: hidden;
+        padding: 3px;
+        width: 350px;
+        height: 27px;
+      }
+    </style>
+    <script type="text/javascript" src="http://localhost:5000/static/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="http://localhost:5000/static/socket.io.min.js"></script>
+    <script type="text/javascript" src="http://localhost:5000/static/hardkeyboard.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            hardkeyboard = new HardKeyboard({
+              textbox: '#text',
+              url: 'http://localhost:5000'
+            })
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Tela da Urna</h1>
+    <div class='msgbox'>
+      Essa página é um Placeholder para tela da urna.<br/>
+      Entrada do teclado da urna (Somente números):
+      <h2 id="text"></h2>
+    </div>
+  </body>
+</html>
