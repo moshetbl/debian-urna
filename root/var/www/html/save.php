@@ -25,10 +25,20 @@
   <body>
     <h1>Tela do Mesário</h1>
     <div class='msgbox'>
-      Essa página é um Placeholder para tela do mesário.<br/>
-      Teste de impressora: <a href="#" onclick="print()">Imprimir</a><br/>
-      Teste de dispositivo USB: <a href="save.php">Gravar dados</a>
-
+      <?php
+      $myfile = fopen("/media/usb0/arquivo-da-urna.txt", "w");
+      if ($myfile) {
+        $txt = "Arquivo gerado em " . (new \DateTime())->format('Y-m-d H:i:s');
+        fwrite($myfile, $txt);
+        fclose($myfile);
+        echo $txt;
+      } else {
+        echo "Não foi possível gravar arquivo. Verifique se o dispositivo está conectado corretamente e tente novamente.";
+      }
+      ?>
+      <br />
+      <br />
+      <a href="javascript: history.back();">Voltar</a>
     </div>
   </body>
 </html>
