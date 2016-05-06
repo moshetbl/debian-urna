@@ -15,8 +15,9 @@ d-i console-keymaps-at/keymap select br-abnt2
 d-i keyboard-configuration/xkb-keymap select br-abnt2
 d-i keyboard-configuration/toggle select No toggling
 
-# Rede em DHCP
-d-i netcfg/choose_interface select auto
+# Rede desativada
+# d-i netcfg/choose_interface select auto
+d-i netcfg/enable boolean false
 d-i netcfg/get_hostname string urna-machine
 d-i netcfg/get_domain string local.br
 d-i netcfg/hostname string urna.local.br
