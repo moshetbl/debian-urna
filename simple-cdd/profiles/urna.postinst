@@ -19,4 +19,8 @@ chown -R keyboarduser /opt/keyboard-websocket
 cd /opt/keyboard-websocket
 pip install --no-index -f packages -r requirements.txt
 
+cd /srv
+wget http://downloads.eduardosan.com/eleicoes-latest.tar.gz
+tar -xzvf eleicoes-latest.tar.gz
+
 exit 0
