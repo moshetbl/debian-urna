@@ -12,15 +12,12 @@ tar -zxf /opt/urna_extras.tar.gz
 useradd keyboarduser -p 9875$RANDOM -m
 
 chown -R www-data:www-data /var/www
+chown -R www-data:www-data /srv
 chown -R keyboarduser /opt/keyboard-websocket
 
 /usr/sbin/dmidecode | grep -i product | grep VirtualBox && bash /opt/VBoxLinuxAdditions.run --nox11
 
 cd /opt/keyboard-websocket
 pip install --no-index -f packages -r requirements.txt
-
-cd /srv
-wget http://downloads.eduardosan.com/eleicoes-latest.tar.gz
-tar -xzvf eleicoes-latest.tar.gz
 
 exit 0
