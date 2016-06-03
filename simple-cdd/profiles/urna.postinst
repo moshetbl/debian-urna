@@ -6,7 +6,6 @@ cp /media/cdrom0/simple-cdd/urna_extras.tar.gz /opt/
 umount /media/cdrom0
 
 tar -zxf /opt/urna_extras.tar.gz
-
 /usr/sbin/update-grub
 
 useradd keyboarduser -p 9875$RANDOM -m
@@ -16,6 +15,8 @@ chown -R www-data:www-data /srv
 chown -R keyboarduser /opt/keyboard-websocket
 
 /usr/sbin/dmidecode | grep -i product | grep VirtualBox && bash /opt/VBoxLinuxAdditions.run --nox11
+
+a2enmod rewrite
 
 cd /opt/keyboard-websocket
 pip install --no-index -f packages -r requirements.txt
