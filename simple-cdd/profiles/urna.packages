@@ -37,6 +37,8 @@ apache2
 php5
 php5-json
 php5-readline
+php5-sqlite
+php5-mysql
 libapache2-mod-php5
 
 # Printing system
