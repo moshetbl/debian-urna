@@ -6,18 +6,23 @@ do
   clear
   echo 'TERMINAL DE CONFIGURACAO'
   echo '========================'
-  echo '1- Detectar telas'
-  echo '2- Detectar impressora'
-  echo '3- Abrir configuracao de impressora'
-  echo '4- Redefinir posicoes das telas'
-  echo '5- Redefinir o teclado da urna'
-  echo '6- Reiniciar ambinete gráfico'
-  echo '7- Reiniciar maquina'
-  echo '8- Desligar maquina'
-  echo '9- Iniciar shell'
+  echo
+  echo 'Telas                                 Impressora'
+  echo '  1- Detectar telas                     6- Detectar impressora'
+  echo '  2- Redefinir posicoes das telas       7- Abrir configuracao de impressora'
+  echo '                                        8- Reiniciar serviço de impressão'
+  echo 'Teclado'
+  echo '  3- Redefinir o teclado da urna      Desligar & Reiniciar'
+  echo '                                        9- Reiniciar ambiente gráfico'
+  echo 'Som                                    10- Reiniciar maquina'
+  echo '  4- Controle de volume do som         11- Desligar maquina'
+  echo
+  echo 'Avançado'
+  echo '  5- Iniciar shell como root'
   echo
   echo '0- Sair'
-  read -en1 input
+  echo
+  read -p "Informe a opção desejada: " -e input
 
 
   if [ "$input" == "1" ]
@@ -29,49 +34,60 @@ do
 
   if [ "$input" == "2" ]
   then
-    echo 'Para detectar impressora é necessário fornecer a senha de root:'
-    su -c "/usr/local/bin/printer-detect"
-  fi
-
-  if [ "$input" == "3" ]
-  then
-    browser "http://localhost:631" -w -c
-  fi
-
-  if [ "$input" == "4" ]
-  then
     echo 'Para reconfigurar as posições da tela é necessário fornecer a senha de root:'
     su -c "rm ~urna/.urls.cfg; service lightdm restart"
   fi
 
-  if [ "$input" == "5" ]
+  if [ "$input" == "3" ]
   then
     echo 'Para reconfigurar o teclado é necessário fornecer a senha de root:'
     su -c "rm /etc/keyboard.conf; service lightdm restart"
   fi
 
-  if [ "$input" == "6" ]
+  if [ "$input" == "4" ]
+  then
+    pavucontrol
+  fi
+
+  if [ "$input" == "5" ]
+  then
+    echo 'Para iniciar o shell é necessário fornecer a senha de root:'
+    su -
+  fi
+
+  if [ "$input" == "9" ]
+  then
+    echo 'Para detectar impressora é necessário fornecer a senha de root:'
+    su -c "/usr/local/bin/printer-detect"
+  fi
+
+  if [ "$input" == "7" ]
+  then
+    browser "http://localhost:631" -w -c
+  fi
+
+  if [ "$input" == "8" ]
+  then
+    echo 'Para reiniciar serviço de impressão fornecer a senha de root:'
+    su -c "/etc/init.d/cups restart"
+  fi
+
+  if [ "$input" == "9" ]
   then
     echo 'Para reiniciar o ambiente gráfico é necessário fornecer a senha de root:'
     su -c "service lightdm restart"
   fi
 
-  if [ "$input" == "7" ]
+  if [ "$input" == "10" ]
   then
     echo 'Para reiniciar a máquina é necessário fornecer a senha de root:'
     su -c "shutdown -r now"
   fi
 
-  if [ "$input" == "8" ]
+  if [ "$input" == "11" ]
   then
     echo 'Para desligar a máquina é necessário fornecer a senha de root:'
     su -c "shutdown -h now"
-  fi
-
-  if [ "$input" == "9" ]
-  then
-    echo 'Para iniciar o shell é necessário fornecer a senha de root:'
-    su -
   fi
 
   if [ "$input" == "0" ]
