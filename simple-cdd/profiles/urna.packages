@@ -61,6 +61,17 @@ linux-headers-3.16.0-4-586
 python-gtk2
 python-webkit
 
+# Audio support
+alsa-base
+alsa-utils
+gstreamer1.0-pulseaudio
+gstreamer0.10-pulseaudio
+libgstreamer0.10-0
+libgstreamer1.0-0
+pulseaudio
+pulseaudio-utils
+pavucontrol
+
 # Dev and VirtualBox Dependencies (SHOULD BE REMOVED IN FINAL VERSION)
 git
 openssh-server
