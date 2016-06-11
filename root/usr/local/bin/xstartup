@@ -12,4 +12,5 @@ then
 fi
 
 /usr/local/bin/printer-start
+xhost +
 /usr/local/bin/keyboard-start
