@@ -55,7 +55,7 @@ do
     su -
   fi
 
-  if [ "$input" == "9" ]
+  if [ "$input" == "6" ]
   then
     echo 'Para detectar impressora é necessário fornecer a senha de root:'
     su -c "/usr/local/bin/printer-detect"
