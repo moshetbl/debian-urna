@@ -30,6 +30,15 @@
         width: 350px;
         height: 27px;
       }
+
+      .hide-cursor-overlay {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        cursor: none;
+      }
     </style>
     <script type="text/javascript" src="http://localhost:5000/static/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="http://localhost:5000/static/socket.io.min.js"></script>
@@ -50,5 +59,6 @@
       Entrada do teclado da urna (Somente números):
       <h2 id="text"></h2>
     </div>
+    <div class='hide-cursor-overlay'></div>
   </body>
 </html>
