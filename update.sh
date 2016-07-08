@@ -22,14 +22,9 @@ cp root/opt/keyboard-websocket/requirements.txt root/opt/keyboard-websocket/requ
 cat root/opt/keyboard-websocket/requirements.txt.original | grep -v git > root/opt/keyboard-websocket/requirements.txt
 echo 'socketIO-client==0.6.6' >> root/opt/keyboard-websocket/requirements.txt
 
-cd root
-mkdir srv
-cd srv
-wget http://downloads.eduardosan.com/eleicoes-latest.tar.gz
-tar -xzf eleicoes-latest.tar.gz
-rm eleicoes-latest.tar.gz
-cd ..
+cp -r ../eleicoes root/srv
 
+cd root
 tar -czf ../urna_extras.tar.gz *
 cd ..
 mv urna_extras.tar.gz simple-cdd/profiles
