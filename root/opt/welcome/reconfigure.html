@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #333;
+        color: #AAA;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .msgbox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+      }
+      #msg1 {
+        text-align: center;
+        opacity: 1;
+        -webkit-animation-delay: 1.5s;
+        -webkit-animation-name: hide;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      .light {
+        font-style: italic;
+        font-size: small;
+        color: #777;
+      }
+      @-webkit-keyframes hide {
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Seja bem-vindo!</h1>
+    <div class='msgbox' id='msg1'>
+      <img src="bisaweb-logo-fundo-dark.png"><br />
+      Sistema Urna 0.12
+      <br/><br/>
+      <p class="light">Pressione qualquer tecla para reconfigurar</p>
+    </div>
+    <script>
+      document.onkeydown = function() {
+        window.location = '//system/quit_error';
+      }
+      setTimeout(function() {
+        window.location = '//system/quit';
+      }, 2000)
+    </script>
+  </body>
+</html>

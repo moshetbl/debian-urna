@@ -9,6 +9,13 @@ then
     /usr/local/bin/browser file:///opt/welcome/welcome.html
   fi
   echo done > /etc/welcome.conf
+else
+  if ! /usr/local/bin/browser file:///opt/welcome/reconfigure.html
+  then
+    /usr/local/bin/reset_configs
+    /usr/local/bin/xstartup
+    exit 0
+  fi
 fi
 
 /usr/local/bin/printer-start
