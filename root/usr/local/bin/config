@@ -19,6 +19,7 @@ do
   echo
   echo 'Avançado'
   echo '  5- Iniciar shell como root'
+  echo '  12- Atualizar código e banco do projeto pelo dispositivo USB'
   echo
   echo '0- Sair'
   echo
@@ -88,6 +89,12 @@ do
   then
     echo 'Para desligar a máquina é necessário fornecer a senha de root:'
     su -c "shutdown -h now"
+  fi
+
+  if [ "$input" == "12" ]
+  then
+    echo 'Para Atualizar código e banco do projeto pelo dispositivo USB é necessário fornecer a senha de root:'
+    su -c "/usr/local/bin/update_project"
   fi
 
   if [ "$input" == "0" ]

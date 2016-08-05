@@ -1,0 +1,37 @@
+#!/bin/bash
+
+function sair {
+  echo
+  [ "$1" == "" ] || echo $1
+  read -n1 -p "Pressione qualquer tecla para finalizar..."
+  [ "$1" == "" ] && exit 0 || exit 1
+}
+
+[ ! -f /media/usb/update.tar.gz ] && [ ! -f /media/usb/dbEleicao.db ] && sair "Nenhum arquivo de atualização encontrado"
+
+if [ -f /media/usb/update.tar.gz ]
+then
+  echo "Encontrado arquivo de atualização de código"
+  echo "Copiando arquivo..."
+  cp /media/usb/update.tar.gz /srv || sair "Erro durante a cópia!"
+
+  echo "Atualizando código..."
+  cd /srv || sair "Erro durante a atualização!"
+  tar -zvxf update.tar.gz || sair "Erro durante a atualização!"
+fi
+
+if [ -f /media/usb/dbEleicao.db ]
+then
+  echo "Encontrado arquivo de atualização de banco"
+  echo "Copiando arquivo..."
+  cp /media/usb/dbEleicao.db /srv/eleicoes/src/banco || sair "Erro durante a cópia!"
+fi
+
+
+echo "Corrigindo permissões..."
+chown -R www-data:www-data /srv || sair "Erro corrigindo permissões!"
+chmod -R 664 /srv || sair "Erro corrigindo permissões!"
+chmod -R +X /srv || sair "Erro corrigindo permissões!"
+
+echo Atualização Finalizada com sucesso!
+sair
