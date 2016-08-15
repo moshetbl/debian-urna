@@ -17,9 +17,9 @@ do
   echo 'Som                                    10- Reiniciar maquina'
   echo '  4- Controle de volume do som         11- Desligar maquina'
   echo
-  echo 'Avançado'
-  echo '  5- Iniciar shell como root'
-  echo '  12- Atualizar código e banco do projeto pelo dispositivo USB'
+  echo 'Avançado                              Dispositivo USB'
+  echo '  5- Iniciar shell como root           12- Atualizar sistema (codigo/banco)'
+  echo '                                       13- Formatar dispositivo'
   echo
   echo '0- Sair'
   echo
@@ -93,8 +93,14 @@ do
 
   if [ "$input" == "12" ]
   then
-    echo 'Para Atualizar código e banco do projeto pelo dispositivo USB é necessário fornecer a senha de root:'
+    echo 'Para Atualizar o sistema pelo dispositivo USB é necessário fornecer a senha de root:'
     su -c "/usr/local/bin/update_project"
+  fi
+
+  if [ "$input" == "13" ]
+  then
+    echo 'Para formatar dispositivo USB é necessário fornecer a senha de root:'
+    su -c "/usr/local/bin/format_usb"
   fi
 
   if [ "$input" == "0" ]

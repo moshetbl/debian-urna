@@ -47,8 +47,9 @@ printer-driver-gutenprint
 printer-driver-hpcups
 python-cups
 
-# USB auto mounting
+# USB auto mounting and formating
 usbmount
+dosfstools
 
 # Keyboard Websocket Dependencies
 xinput

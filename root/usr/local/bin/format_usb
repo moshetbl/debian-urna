@@ -1,0 +1,37 @@
+#!/bin/bash
+function quit {
+  read -n1 -p 'Aperte qualquer tecla para continuar...'
+  exit $1
+}
+
+if ! mount -l | grep /media/usb >/dev/null
+then
+  echo 'Nenhum dispositivo de armazenamento USB detectado.'
+  quit 1
+fi
+
+USB_DEVICE=`mount -l | grep /media/usb | cut -f1 -d" "`
+
+read -p "Esse processo irá apagar todos os dados do dispositivo USB $USB_DEVICE. Tem certeza que deseja continuar? [s/N] " ANS
+[ "$ANS" != "s" ] && [ "$ANS" != "S" ] && exit 2
+
+if ! umount $USB_DEVICE
+then
+  echo 'Dispositivo em uso, não é possível desmonta-lo.'
+  quit 1
+fi
+
+if mkfs.vfat -F 32 -n BACKUP -I $USB_DEVICE
+then
+  echo 'Dispositivo formatado com sucesso.'
+  if DEVNAME=$USB_DEVICE /usr/share/usbmount/usbmount add
+  then
+    quit 0
+  else
+    echo 'Erro ao remontar o dispositivo.'
+    quit 1
+  fi
+else
+  echo 'Erro ao formatar dispositivo'
+  quit 1
+fi
