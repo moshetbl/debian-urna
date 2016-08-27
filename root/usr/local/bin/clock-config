@@ -1,0 +1,15 @@
+START_XFWM=0
+if ! ps aux | grep xfwm4
+then
+  START_XFWM=1
+  /usr/bin/xfwm4 &
+fi
+
+/sbin/hwclock --hctosys --utc
+/usr/bin/time-admin
+/sbin/hwclock --systohc --utc
+
+if [ "$START_XFWM" == "1" ]
+then
+  killall xfwm4
+fi

@@ -7,19 +7,23 @@ do
   echo 'TERMINAL DE CONFIGURACAO'
   echo '========================'
   echo
-  echo 'Telas                                 Impressora'
-  echo '  1- Detectar telas                     6- Detectar impressora'
-  echo '  2- Redefinir posicoes das telas       7- Abrir configuracao de impressora'
-  echo '                                        8- Reiniciar serviço de impressão'
+  echo 'Telas                                 Desligar & Reiniciar'
+  echo '  1- Detectar telas                     9- Reiniciar ambiente gráfico'
+  echo '  2- Redefinir posicoes das telas      10- Reiniciar maquina'
+  echo '                                       11- Desligar maquina'
   echo 'Teclado'
-  echo '  3- Redefinir o teclado da urna      Desligar & Reiniciar'
-  echo '                                        9- Reiniciar ambiente gráfico'
-  echo 'Som                                    10- Reiniciar maquina'
-  echo '  4- Controle de volume do som         11- Desligar maquina'
-  echo
-  echo 'Avançado                              Dispositivo USB'
-  echo '  5- Iniciar shell como root           12- Atualizar sistema (codigo/banco)'
-  echo '                                       13- Formatar dispositivo'
+  echo '  3- Redefinir o teclado da urna      Dispositivo USB'
+  echo '                                       12- Atualizar sistema (codigo/banco)'
+  echo 'Som                                    13- Formatar dispositivo'
+  echo '  4- Controle de volume do som'
+  echo '                                      Data & Hora'
+  echo 'Avançado                               14- Ajustar data & hora'
+  echo '  5- Iniciar shell como root          '
+  echo '                                      '
+  echo 'Impressora'
+  echo '  6- Detectar impressora'
+  echo '  7- Abrir configuracao de impressora'
+  echo '  8- Reiniciar serviço de impressão'
   echo
   echo '0- Sair'
   echo
@@ -101,6 +105,12 @@ do
   then
     echo 'Para formatar dispositivo USB é necessário fornecer a senha de root:'
     su -c "/usr/local/bin/format_usb"
+  fi
+
+  if [ "$input" == "14" ]
+  then
+    echo 'Para ajustar data & hora é necessário fornecer a senha de root:'
+    su -c "/usr/local/bin/clock-config"
   fi
 
   if [ "$input" == "0" ]

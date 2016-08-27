@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ ! -f /etc/clock.conf ]
+then
+  if browser file:///opt/clock-configure/configure.html
+  then
+    echo done > /etc/clock.conf
+  else
+    /usr/local/bin/clock-config full
+    $0
+  fi
+fi

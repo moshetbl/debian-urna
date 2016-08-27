@@ -73,6 +73,9 @@ pulseaudio
 pulseaudio-utils
 pavucontrol
 
+# Gnome clock configuration tool
+gnome-system-tools
+
 # Dev and VirtualBox Dependencies (SHOULD BE REMOVED IN FINAL VERSION)
 git
 openssh-server

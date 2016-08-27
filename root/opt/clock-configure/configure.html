@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        background-color: #333;
+        color: #AAA;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .msgbox {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+      }
+      #msg1 {
+        text-align: center;
+        opacity: 0;
+        -webkit-animation-delay: 1s;
+        -webkit-animation-name: show;
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-fill-mode: forwards;
+      }
+      .light {
+        font-style: italic;
+        font-size: small;
+        color: #777;
+      }
+      @-webkit-keyframes show {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+      }
+      .msgbox a {
+        padding: 10px;
+        background-color: #AAA;
+        color: #333;
+        border-radius: 5px;
+        width: 100px;
+        display: block;
+        float: left;
+        text-decoration: inherit;
+      }
+      .msgbox a:first-of-type {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Configurando data & Hora</h1>
+    <div class='msgbox' id='msg1'>
+      <h1 id='data'></h1>
+      <h2 id='hora'></h2>
+      <p>A data e a hora estão corretas?</p>
+      <a href="//system/quit">Sim</a>
+      <a href="//system/quit_error">Não</a>
+
+    </div>
+    <script>
+      function leftPad(number, targetLength) {
+        var output = number + '';
+        while (output.length < targetLength) {
+            output = '0' + output;
+        }
+        return output;
+      }
+      setInterval(function(){
+        // Obtém a data/hora atual
+        var data = new Date();
+
+        // Guarda cada pedaço em uma variável
+        var dia     = data.getDate();           // 1-31
+        var dia_sem = data.getDay();            // 0-6 (zero=domingo)
+        var mes     = data.getMonth();          // 0-11 (zero=janeiro)
+        var ano2    = data.getYear();           // 2 dígitos
+        var ano4    = data.getFullYear();       // 4 dígitos
+        var hora    = data.getHours();          // 0-23
+        var min     = data.getMinutes();        // 0-59
+        var seg     = data.getSeconds();        // 0-59
+        var mseg    = data.getMilliseconds();   // 0-999
+        var tz      = data.getTimezoneOffset(); // em minutos
+
+        // Formata a data e a hora (note o mês + 1)
+        var str_data = leftPad(dia, 2) + '/' + leftPad(mes+1, 2) + '/' + leftPad(ano4, 2);
+        var str_hora = leftPad(hora,2) + ':' + leftPad(min, 2) + ':' + leftPad(seg, 2);
+        document.getElementById('data').innerHTML = str_data;
+        document.getElementById('hora').innerHTML = str_hora;
+      }, 1000)
+
+
+    </script>
+  </body>
+</html>

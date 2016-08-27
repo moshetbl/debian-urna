@@ -2,4 +2,5 @@
 rm /etc/keyboard.conf
 rm /etc/welcome.conf
 rm /etc/printer.conf
+rm /etc/clock.conf
 rm ~urna/.urls.cfg
