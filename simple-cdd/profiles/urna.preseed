@@ -37,13 +37,13 @@ d-i passwd/user-password password urna
 d-i passwd/user-password-again password urna
 
 # Horario
-tzsetup-udeb  time/zone string  America/Sao_Paulo
-tzsetup-udeb  tzsetup/detected  boolean false
+tzsetup-udeb time/zone string  America/Sao_Paulo
+tzsetup-udeb tzsetup/detected  boolean true
 tzsetup-udeb tzsetup/country/BR string America/Sao_Paulo
 clock-setup clock-setup/utc boolean true
-clock-setup clock-setup/ntp-server string pool.ntp.br
-clock-setup clock-setup/ntp boolean true
-d-i clock-setup/ntp-server string
+clock-setup clock-setup/ntp boolean false
+#clock-setup clock-setup/ntp-server string pool.ntp.br
+#d-i clock-setup/ntp-server string
 
 # Particionamento
 d-i partman-auto/init_automatically_partition       select  Guided - use entire disk
