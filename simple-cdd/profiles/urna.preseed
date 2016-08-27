@@ -16,7 +16,11 @@ d-i keyboard-configuration/xkb-keymap select br-abnt2
 d-i keyboard-configuration/toggle select No toggling
 
 # Rede desativada
+# d-i netcfg/choose_interface select auto
 d-i netcfg/enable boolean false
+d-i netcfg/get_hostname string urna-machine
+d-i netcfg/get_domain string local.br
+d-i netcfg/hostname string urna.local.br
 d-i hw-detect/load_firmware boolean true
 
 # Repositorios
@@ -37,8 +41,9 @@ tzsetup-udeb  time/zone string  America/Sao_Paulo
 tzsetup-udeb  tzsetup/detected  boolean false
 tzsetup-udeb tzsetup/country/BR string America/Sao_Paulo
 clock-setup clock-setup/utc boolean true
-clock-setup clock-setup/ntp boolean false
-
+clock-setup clock-setup/ntp-server string pool.ntp.br
+clock-setup clock-setup/ntp boolean true
+d-i clock-setup/ntp-server string
 
 # Particionamento
 d-i partman-auto/init_automatically_partition       select  Guided - use entire disk
