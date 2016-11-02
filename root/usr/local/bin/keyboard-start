@@ -2,11 +2,16 @@
 
 cd /opt/keyboard-websocket/
 
+./stop_gunicorn.sh
+su keyboarduser -c "./stop_gunicorn.sh"
+su keyboarduser -c "./start_gunicorn.sh"
+while ! echo exit | nc localhost 5000; do sleep 1; done
+
 if [ ! -f /etc/keyboard.conf ]
 then
-  browser file:///opt/keyboard-ws-configure/configure.html &
+  python hardware_app.py -a -k &
   PID=$!
-  python detect_keyboard.py -o /etc/keyboard.conf
+  browser 'http://localhost:5000/detect?title=Detecção do teclado&message=Escolha entre os teclados abaixo qual é o teclado da urna. Para ajudar a identificar o teclado correto, pressione algumas teclas nele e identifique qual é no espaço abaixo:&redirect=http://system/quit&button=Escolher como teclado da urna'
   kill $PID
 fi
 
@@ -22,9 +27,6 @@ function kill_old {
     fi
   fi
 }
-./stop_gunicorn.sh
-su keyboarduser -c "./stop_gunicorn.sh"
-su keyboarduser -c "./start_gunicorn.sh"
 
 kill_old hardware_app.py >/dev/null 2>&1
 su keyboarduser -c "nohup python hardware_app.py -f /etc/keyboard.conf &"
