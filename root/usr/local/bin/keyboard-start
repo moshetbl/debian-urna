@@ -11,6 +11,8 @@ if [ ! -f /etc/keyboard.conf ]
 then
   python hardware_app.py -a -k &
   PID=$!
+  > /etc/keyboard.conf
+  chown keyboarduser: /etc/keyboard.conf
   browser 'http://localhost:5000/detect?title=Detecção do teclado&message=Escolha entre os teclados abaixo qual é o teclado da urna. Para ajudar a identificar o teclado correto, pressione algumas teclas nele e identifique qual é no espaço abaixo:&redirect=http://system/quit&button=Escolher como teclado da urna'
   kill $PID
 fi
