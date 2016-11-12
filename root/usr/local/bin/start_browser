@@ -8,4 +8,14 @@ function get_urls() {
   cat ~/.urls.cfg
 }
 
-browser `get_urls`
+browser `get_urls` &
+BROWSER_PID=$!
+unset window_id
+while [ "$window_id" == "" ]
+do
+  sleep 0.1
+  window_id=`wmctrl -l | grep 'MultiMonitor Browser' | grep -vi eleitor | cut -f1 -d' '`
+done
+wmctrl -ai $window_id
+
+wait $BROWSER_PID

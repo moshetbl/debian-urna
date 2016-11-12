@@ -15,6 +15,7 @@ xbase-clients
 
 # X
 xorg
+wmctrl
 
 # workaround http://bugs.debian.org/405639
 xserver-xorg-input-all
