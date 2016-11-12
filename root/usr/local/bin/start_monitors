@@ -5,8 +5,8 @@ for VGA in $VGA_LIST
 do
   if [ "$LEFT_VGA" != "" ]
   then
-    COMMAND="$COMMAND --output $LEFT_VGA --left-of $VGA"
+    COMMAND="$COMMAND --output $LEFT_VGA --auto --left-of $VGA"
   fi
   LEFT_VGA=$VGA
 done
-$COMMAND
+$COMMAND --output $LEFT_VGA --auto
