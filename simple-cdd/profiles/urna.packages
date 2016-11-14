@@ -64,15 +64,36 @@ python-gtk2
 python-webkit
 
 # Audio support
+mplayer
 alsa-base
 alsa-utils
-gstreamer1.0-pulseaudio
-gstreamer0.10-pulseaudio
-libgstreamer0.10-0
-libgstreamer1.0-0
 pulseaudio
 pulseaudio-utils
 pavucontrol
+pulseaudio-module-x11
+gstreamer0.10-alsa
+gstreamer1.0-alsa
+libavc1394-0
+libavresample2
+libcdparanoia0
+libsndfile1
+libtag1-vanilla
+libtag1c2a
+libwavpack1
+libwebrtc-audio-processing-0
+gstreamer0.10-alsa
+gstreamer0.10-plugins-base
+gstreamer0.10-pulseaudio
+gstreamer1.0-alsa
+gstreamer1.0-libav
+gstreamer1.0-plugins-base
+gstreamer1.0-plugins-good
+gstreamer1.0-pulseaudio
+gstreamer1.0-x
+libgstreamer-plugins-base0.10-0
+libgstreamer-plugins-base1.0-0
+libgstreamer0.10-0
+libgstreamer1.0-0
 
 # Gnome clock configuration tool
 gnome-system-tools
