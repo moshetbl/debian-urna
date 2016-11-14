@@ -64,7 +64,7 @@ python-gtk2
 python-webkit
 
 # Audio support
-mplayer
+mplayer2
 alsa-base
 alsa-utils
 pulseaudio
